@@ -11,13 +11,6 @@ symbol = oneOf "!#$%&|*+-/:<=>?@^_~"
 spaces :: Parser ()
 spaces = skipMany1 space
 
--- Create function readExpr, passes input string to Parsec Parse function,
--- which takes a Parser (spaces >> symbol), a name for the input ("Lisp") -- and the input itself (input).
-readExpr :: String -> String
-readExpr input = case parse (spaces >> symbol) "lisp" input of
-    Left err -> "No match: " ++ show err
-    Right val -> "Found value"
-
 --Define a new data type that can hold a Lisp (Scheme) value, with |
 --separated constructors.
 data LispVal = Atom String
@@ -56,6 +49,13 @@ parseNumber = liftM (Number . read) $ many1 digit
 parseExpr = parseAtom
          <|> parseString
          <|> parseNumber
+
+-- Create function readExpr, passes input string to Parsec Parse function,
+-- which takes a Parser (parseExpr), a name for the input ("Lisp") -- and the input itself (input).
+readExpr :: String -> String
+readExpr input = case parse parseExpr "lisp" input of
+    Left err -> "No match: " ++ show err
+    Right val -> "Found value"
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
