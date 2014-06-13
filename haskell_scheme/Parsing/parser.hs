@@ -6,11 +6,14 @@ import System.Environment
 symbol :: Parser Char
 symbol = oneOf "!#$%&|*+-/:<=>?@^_~"
 
+--Define a parser that ignores whitespace ... uses skipMany1 Parser action
+space :: Parser ()
+spaces = skipMany1 space
+
 -- Create function readExpr, passes input string to Parsec Parse function,
--- which takes a Parser (symbol), a name for the input ("Lisp") and the
--- input itself (input).
+-- which takes a Parser (spaces >> symbol), a name for the input ("Lisp") -- and the input itself (input).
 readExpr :: String -> String
-readExpr input = case parse symbol "lisp" input of
+readExpr input = case parse (spaces >> symbol) "lisp" input of
     Left err -> "No match: " ++ show err
     Right val -> "Found value"
 
