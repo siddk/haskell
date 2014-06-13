@@ -14,6 +14,7 @@ readExpr input = case parse symbol "lisp" input of
     Left err -> "No match: " ++ show err
     Right val -> "Found value"
 
+-- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
 main = do
          args <- getArgs
