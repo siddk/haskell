@@ -38,7 +38,9 @@ parseString = do
 --followed by any number of letters, digits, or symbols
 parseAtom :: Parser LispVal
 parseAtom = do
-              
+              first <- letter <|> symbol
+              rest <- many (letter <|> digit <|> symbol)
+
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
