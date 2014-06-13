@@ -1,6 +1,7 @@
 module Main where
 import Text.ParserCombinators.Parsec hiding (spaces)
 import System.Environment
+import Control.Monad
 
 -- Define a parser that recognizes symbols allowed in Scheme identifiers
 symbol :: Parser Char
@@ -46,6 +47,10 @@ parseAtom = do
                           "#f" -> Bool False
                           _    -> Atom atom
 
+--Create LispVal Parser to parse out Numbers. Uses liftM to lift Parser
+--String monad off of many1 digit
+parseNumber :: Parser LispVal
+parseNumber = liftM (Number . read) $ many1 digit
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
