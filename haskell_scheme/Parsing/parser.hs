@@ -52,6 +52,11 @@ parseAtom = do
 parseNumber :: Parser LispVal
 parseNumber = liftM (Number . read) $ many1 digit
 
+--Create general LispVal Expression parser
+parseExpr = parseAtom
+         <|> parseString
+         <|> parseNumber
+
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
 main = do
