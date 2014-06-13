@@ -17,6 +17,15 @@ readExpr input = case parse (spaces >> symbol) "lisp" input of
     Left err -> "No match: " ++ show err
     Right val -> "Found value"
 
+--Define a new data type that can hold a Lisp (Scheme) value, with |
+--separated constructors.
+data LispVal = Atom String
+             | List [LispVal]
+             | DottedList [LispVal] LispVal
+             | Number Integer
+             | String String
+             | Bool Bool
+
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
 main = do
