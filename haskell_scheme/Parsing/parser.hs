@@ -34,6 +34,12 @@ parseString = do
                 char '"'
                 return $ String x
 
+--Create LispVal Parser to parse out Atoms. An atom is a letter or symbol
+--followed by any number of letters, digits, or symbols
+parseAtom :: Parser LispVal
+parseAtom = do
+              
+
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
 main = do
