@@ -10,3 +10,7 @@ symbol = oneOf "!#$%&|*+-/:<=>?@^_~"
 -- which takes a Parser (symbol), a name for the input ("Lisp") and the
 -- input itself (input).
 readExpr :: String -> String
+readExpr input = case parse symbol "lisp" input of
+    Left err -> "No match: " ++ show err
+    Right val -> "Found value"
+    
