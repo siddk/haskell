@@ -40,6 +40,11 @@ parseAtom :: Parser LispVal
 parseAtom = do
               first <- letter <|> symbol
               rest <- many (letter <|> digit <|> symbol)
+              let atom = first:rest
+              return $ case atom of
+                          "#t" -> Bool True
+                          "#f" -> Bool False
+                          _    -> Atom atom
 
 
 -- Main function, reads in command line args, executes readExpr on args
