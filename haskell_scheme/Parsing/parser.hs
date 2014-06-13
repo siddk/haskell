@@ -26,6 +26,14 @@ data LispVal = Atom String
              | String String
              | Bool Bool
 
+--Create LispVal Parser to parse out Strings --> designated by ""
+parseString :: Parser LispVal
+parseString = do
+                char '"'
+                x <- many (noneOf "\"")
+                char '"'
+                return $ String x
+
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
 main = do
