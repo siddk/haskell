@@ -7,7 +7,7 @@ symbol :: Parser Char
 symbol = oneOf "!#$%&|*+-/:<=>?@^_~"
 
 --Define a parser that ignores whitespace ... uses skipMany1 Parser action
-space :: Parser ()
+spaces :: Parser ()
 spaces = skipMany1 space
 
 -- Create function readExpr, passes input string to Parsec Parse function,
