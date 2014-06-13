@@ -16,4 +16,5 @@ readExpr input = case parse symbol "lisp" input of
 
 main :: IO ()
 main = do
-         args 
+         args <- getArgs
+         putStrLn (readExpr (args !! 0))
