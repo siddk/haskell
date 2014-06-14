@@ -23,9 +23,9 @@ data LispVal = Atom String
 --Create LispVal Parser to parse out Strings --> designated by ""
 parseString :: Parser LispVal
 parseString = do
-                char '"'
+                char '\"'
                 x <- many (noneOf "\"")
-                char '"'
+                char '\"'
                 return $ String x
 
 --Create LispVal Parser to parse out Atoms. An atom is a letter or symbol
