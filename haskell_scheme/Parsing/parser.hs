@@ -47,7 +47,14 @@ parseNumber = liftM (Number . read) $ many1 digit
 
 --Create LispVal Parser for parenthesized lists.
 parseList :: Parser LispVal
-parseList = liftM List $ sepBy parseExpr spaces 
+parseList = liftM List $ sepBy parseExpr spaces
+
+--Create LispVal Parser for dotted lists.
+parseDottedList :: Parser LispVal
+parseDottedList = do
+                    head <- endBy parseExpr spaces
+                    tail <- char '.' >> spaces >> parseExpr
+                    return $ DottedList head tail
 
 --Create general LispVal Expression parser
 parseExpr = parseAtom
