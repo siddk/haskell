@@ -45,6 +45,10 @@ parseAtom = do
 parseNumber :: Parser LispVal
 parseNumber = liftM (Number . read) $ many1 digit
 
+--Create LispVal Parser for parenthesized lists.
+parseList :: Parser LispVal
+parseList = liftM List $ sepBy parseExpr spaces 
+
 --Create general LispVal Expression parser
 parseExpr = parseAtom
          <|> parseString
