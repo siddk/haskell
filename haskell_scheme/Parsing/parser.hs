@@ -68,10 +68,11 @@ parseExpr = parseAtom
          <|> parseString
          <|> parseNumber
          <|> parseQuoted
-         <|> do char '('
-                        x <- try parseList <|> parseDottedList
-                        char ')'
-                        return x
+         <|> do
+                char '('
+                x <- try parseList <|> parseDottedList
+                char ')'
+                return x
 
 -- Create function readExpr, passes input string to Parsec Parse function,
 -- which takes a Parser (parseExpr), a name for the input ("Lisp")
