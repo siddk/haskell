@@ -42,12 +42,8 @@ parseAtom = do
 
 --Create LispVal Parser to parse out Numbers. Uses liftM to lift Parser
 --String monad off of many1 digit
---Edit: New Parser with do notation and >>= operator
 parseNumber :: Parser LispVal
 parseNumber = liftM (Number . read) $ many1 digit
--- parseNumber = do
---                 x <- read . many1 digit
---                 return $ Number x
 
 --Create general LispVal Expression parser
 parseExpr = parseAtom
