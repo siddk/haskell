@@ -45,7 +45,9 @@ parseAtom = do
 --Edit: New Parser with do notation and >>= operator
 parseNumber :: Parser LispVal
 -- parseNumber = liftM (Number . read) $ many1 digit
-
+parseNumber = do
+                x <- many1 digit
+                return $ Number . read x
 
 --Create general LispVal Expression parser
 parseExpr = parseAtom
