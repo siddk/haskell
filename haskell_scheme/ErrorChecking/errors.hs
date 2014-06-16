@@ -173,7 +173,7 @@ extractValue (Right val) = val
 readExpr :: String -> ThrowsError LispVal
 readExpr input = case parse parseExpr "lisp" input of
     Left err -> throwError $ Parser err
-    Right val -> val
+    Right val -> return val
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
