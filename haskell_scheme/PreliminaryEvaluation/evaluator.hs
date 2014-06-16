@@ -74,14 +74,6 @@ parseExpr = parseAtom
                 char ')'
                 return x
 
---Create function readExpr, passes input string to Parsec Parse function,
---which takes a Parser (parseExpr), a name for the input ("Lisp")
---and the input itself (input).
-readExpr :: String -> String
-readExpr input = case parse parseExpr "lisp" input of
-    Left err -> "No match: " ++ show err
-    Right val -> "Found value"
-
 --Helper function for showing lists
 unwordsList :: [LispVal] -> String
 unwordsList = unwords . map showVal
@@ -99,6 +91,13 @@ showVal (DottedList head tail) = "(" ++ unwordsList head ++ " . " ++ showVal tai
 --Make haskell default Show an instance of showVal
 instance Show LispVal where show = showVal
 
+--Create function readExpr, passes input string to Parsec Parse function,
+--which takes a Parser (parseExpr), a name for the input ("Lisp")
+--and the input itself (input).
+readExpr :: String -> String
+readExpr input = case parse parseExpr "lisp" input of
+    Left err -> "No match: " ++ show err
+    Right val -> "Found value" ++ show val
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
