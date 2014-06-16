@@ -96,7 +96,13 @@ eval :: LispVal -> LispVal
 eval val@(String _) = val
 eval val@(Number _) = val
 eval val@(Bool _) = val
-eval (List [Atom "quote", val]) = val
+eval (List [Atom "quote", val]) =
+eval (List (Atom func : args)) = apply func $ map eval args
+
+--Setup apply function, to apply a function to a series of arguments --> Primitive functionality
+-- i.e. (+ 2 2)
+apply :: String -> [LispVal] -> LispVal
+apply func args = maybe (Bool False) ($ args) $ lookup func primitives
 
 --Create function readExpr, passes input string to Parsec Parse function,
 --which takes a Parser (parseExpr), a name for the input ("Lisp")
