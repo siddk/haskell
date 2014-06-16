@@ -93,12 +93,13 @@ showVal (DottedList head tail) = "(" ++ unwordsList head ++ " . " ++ showVal tai
 instance Show LispVal where show = showVal
 
 --Setup primitive type eval
-eval :: LispVal -> LispVal
-eval val@(String _) = val
-eval val@(Number _) = val
-eval val@(Bool _) = val
-eval (List [Atom "quote", val]) = val
-eval (List (Atom func : args)) = apply func $ map eval args
+eval :: LispVal -> ThrowsError LispVal
+eval val@(String _) = return val
+eval val@(Number _) = return val
+eval val@(Bool _) = return val
+eval (List [Atom "quote", val]) = return val
+eval (List (Atom func : args)) = mapM eval args >>= apply func
+eval badForm = throwError $ BadSpecialForm "Unrecognized special form" badForm
 
 --Setup apply function, to apply a function to a series of arguments --> Primitive functionality
 -- i.e. (+ 2 2)
@@ -129,14 +130,6 @@ unpackNum (String n) = let parsed = reads n :: [(Integer, String)] in
 unpackNum (List [n]) = unpackNum n
 unpackNum _ = 0
 
---Create function readExpr, passes input string to Parsec Parse function,
---which takes a Parser (parseExpr), a name for the input ("Lisp")
---and the input itself (input).
-readExpr :: String -> LispVal
-readExpr input = case parse parseExpr "lisp" input of
-    Left err -> String $ "No match: " ++ show err
-    Right val -> val
-
 --Create Datatype to represent Errors
 data LispError = NumArgs Integer [LispVal]
                | TypeMismatch String LispVal
@@ -158,10 +151,25 @@ showError (Parser parseErr)             = "Parse error at " ++ show parseErr
 --Bind show to showError
 instance Show LispError where show = showError
 
---make error type an instance of Error
+--Make error type an instance of Error
 instance Error LispError where
-     noMsg = Default "An error has occurred"
-     strMsg = Default
+    noMsg = Default "An error has occurred"
+    strMsg = Default
+type ThrowsError = Either LispError
+
+--Helper functions
+trapError action = catchError action (return . show)
+
+extractValue :: ThrowsError a -> a
+extractValue (Right val) = val
+
+--Create function readExpr, passes input string to Parsec Parse function,
+--which takes a Parser (parseExpr), a name for the input ("Lisp")
+--and the input itself (input).
+readExpr :: String -> ThrowsError LispVal
+readExpr input = case parse parseExpr "lisp" input of
+    Left err -> throwError $ Parser err
+    Right val -> val
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
