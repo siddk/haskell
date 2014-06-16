@@ -96,6 +96,9 @@ showVal (Bool False) = "#f"
 showVal (List contents) = "(" ++ unwordsList contents ++ ")"
 showVal (DottedList head tail) = "(" ++ unwordsList head ++ " . " ++ showVal tail ++ ")"
 
+--Make haskell default Show an instance of showVal
+instance Show LispVal where show = showVal
+
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
