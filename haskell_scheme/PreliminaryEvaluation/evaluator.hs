@@ -97,7 +97,7 @@ instance Show LispVal where show = showVal
 readExpr :: String -> String
 readExpr input = case parse parseExpr "lisp" input of
     Left err -> "No match: " ++ show err
-    Right val -> "Found value" ++ show val
+    Right val -> "Found " ++ show val
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
