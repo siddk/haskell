@@ -137,6 +137,15 @@ readExpr input = case parse parseExpr "lisp" input of
     Left err -> String $ "No match: " ++ show err
     Right val -> val
 
+--Create Datatype to represent Errors
+data LispError = NumArgs Integer [LispVal]
+               | TypeMismatch String LispVal
+               | Parser ParseError
+               | BadSpecialForm String LispVal
+               | NotFunction String String
+               | UnboundVar String String
+               | Default String
+
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
 main = getArgs >>= print . eval . readExpr . head
