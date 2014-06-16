@@ -104,6 +104,16 @@ eval (List (Atom func : args)) = apply func $ map eval args
 apply :: String -> [LispVal] -> LispVal
 apply func args = maybe (Bool False) ($ args) $ lookup func primitives
 
+--Define list of primitives
+primitives :: [(String, [LispVal] -> LispVal)]
+primitives = [("+", numericBinop (+)),
+              ("-", numericBinop (-)),
+              ("*", numericBinop (*)),
+              ("/", numericBinop div),
+              ("mod", numericBinop mod),
+              ("quotient", numericBinop quot),
+              ("remainder", numericBinop rem)]
+
 --Create function readExpr, passes input string to Parsec Parse function,
 --which takes a Parser (parseExpr), a name for the input ("Lisp")
 --and the input itself (input).
