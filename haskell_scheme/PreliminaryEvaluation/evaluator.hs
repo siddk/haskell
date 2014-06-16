@@ -86,6 +86,7 @@ readExpr input = case parse parseExpr "lisp" input of
 showVal :: LispVal -> String
 showVal (String contents) = "\"" ++ contents ++ "\""
 showVal (Atom name) = name
+showVal (Number contents) = show contents
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
