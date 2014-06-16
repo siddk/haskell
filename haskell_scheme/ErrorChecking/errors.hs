@@ -158,6 +158,11 @@ showError (Parser parseErr)             = "Parse error at " ++ show parseErr
 --Bind show to showError
 instance Show LispError where show = showError
 
+--make error type an instance of Error
+instance Error LispError where
+     noMsg = Default "An error has occurred"
+     strMsg = Default
+
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
 main = getArgs >>= print . eval . readExpr . head
