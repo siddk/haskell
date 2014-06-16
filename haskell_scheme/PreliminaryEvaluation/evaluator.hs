@@ -114,6 +114,20 @@ primitives = [("+", numericBinop (+)),
               ("quotient", numericBinop quot),
               ("remainder", numericBinop rem)]
 
+--Define numericBinop
+numericBinop :: (Integer -> Integer -> Integer) -> [LispVal] -> LispVal
+numericBinop op params = Number $ foldl1 op $ map unpackNum params
+
+--Define unpackNum
+unpackNum :: LispVal -> Integer
+unpackNum (Number n) = n
+unpackNum (String n) = let parsed = reads n :: [(Integer, String)] in
+                           if null parsed
+                              then 0
+                              else fst $ parsed !! 0
+unpackNum (List [n]) = unpackNum n
+unpackNum _ = 0
+
 --Create function readExpr, passes input string to Parsec Parse function,
 --which takes a Parser (parseExpr), a name for the input ("Lisp")
 --and the input itself (input).
