@@ -82,6 +82,10 @@ readExpr input = case parse parseExpr "lisp" input of
     Left err -> "No match: " ++ show err
     Right val -> "Found value"
 
+--Helper function for showing lists
+unwordsList :: [LispVal] -> String
+unwordsList = unwords . map showVal
+
 --Define print formatting for LispVal values
 showVal :: LispVal -> String
 showVal (String contents) = "\"" ++ contents ++ "\""
@@ -91,6 +95,7 @@ showVal (Bool True) = "#t"
 showVal (Bool False) = "#f"
 showVal (List contents) = "(" ++ unwordsList contents ++ ")"
 showVal (DottedList head tail) = "(" ++ unwordsList head ++ " . " ++ showVal tail ++ ")"
+
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
