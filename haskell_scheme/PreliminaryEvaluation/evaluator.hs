@@ -74,13 +74,17 @@ parseExpr = parseAtom
                 char ')'
                 return x
 
--- Create function readExpr, passes input string to Parsec Parse function,
--- which takes a Parser (parseExpr), a name for the input ("Lisp")
--- and the input itself (input).
+--Create function readExpr, passes input string to Parsec Parse function,
+--which takes a Parser (parseExpr), a name for the input ("Lisp")
+--and the input itself (input).
 readExpr :: String -> String
 readExpr input = case parse parseExpr "lisp" input of
     Left err -> "No match: " ++ show err
     Right val -> "Found value"
+
+--Define print formatting for LispVal values
+showVal :: LispVal -> String
+showVal (String contents) = "\"" ++ contents ++ "\""
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
