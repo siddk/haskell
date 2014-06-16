@@ -146,6 +146,18 @@ data LispError = NumArgs Integer [LispVal]
                | UnboundVar String String
                | Default String
 
+--Function to show errors
+showError :: LispError -> String
+showError (UnboundVar message varname)  = message ++ ": " ++ varname
+showError (BadSpecialForm message form) = message ++ ": " ++ show form
+showError (NotFunction message func)    = message ++ ": " ++ show func
+showError (NumArgs expected found)      = "Expected " ++ show expected ++ " args; found values " ++ unwordsList found
+showError (TypeMismatch expected found) = "Invalid type: expected " ++ expected ++ ", found " ++ show found
+showError (Parser parseErr)             = "Parse error at " ++ show parseErr
+
+--Bind show to showError
+instance Show LispError where show = showError
+
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
 main = getArgs >>= print . eval . readExpr . head
