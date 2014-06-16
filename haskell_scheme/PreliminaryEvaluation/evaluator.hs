@@ -89,6 +89,8 @@ showVal (Atom name) = name
 showVal (Number contents) = show contents
 showVal (Bool True) = "#t"
 showVal (Bool False) = "#f"
+showVal (List contents) = "(" ++ unwordsList contents ++ ")"
+
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
