@@ -137,13 +137,16 @@ numericBinop op           []  = throwError $ NumArgs 2 []
 numericBinop op singleVal@[_] = throwError $ NumArgs 2 singleVal
 numericBinop op params        = mapM unpackNum params >>= return . Number . foldl1 op
 
---Define boolBinop
+--Define boolBinop, set functions to types
 boolBinop :: (LispVal -> ThrowsError a) -> (a -> a -> Bool) -> [LispVal] -> ThrowsError LispVal
 boolBinop unpacker op args = if length args /= 2
                              then throwError $ NumArgs 2 args
                              else do left <- unpacker $ args !! 0
-                                      right <- unpacker $ args !! 1
-                                      return $ Bool $ left `op` right
+                                     right <- unpacker $ args !! 1
+                                     return $ Bool $ left `op` right
+numBoolBinop  = boolBinop unpackNum
+strBoolBinop  = boolBinop unpackStr
+boolBoolBinop = boolBinop unpackBool
 
 --Define unpackNum
 unpackNum :: LispVal -> ThrowsError Integer
