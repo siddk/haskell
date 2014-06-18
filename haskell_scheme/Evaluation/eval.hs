@@ -155,6 +155,11 @@ unpackStr (Number s) = return $ show s
 unpackStr (Bool s)   = return $ show s
 unpackStr notString  = throwError $ TypeMismatch "string" notString
 
+--Define unpackBool
+unpackBool :: LispVal -> ThrowsError Bool
+unpackBool (Bool b) = return b
+unpackBool notBool  = throwError $ TypeMismatch "boolean" notBool
+
 --Define unpackNum
 unpackNum :: LispVal -> ThrowsError Integer
 unpackNum (Number n) = return n
