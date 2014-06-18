@@ -283,9 +283,19 @@ readExpr input = case parse parseExpr "lisp" input of
     Right val -> return val
 
 --IO helper functions
+
 --Print a string, flush output buffer
 flushStr :: String -> IO ()
 flushStr str = putStr str >> hFlush stdout
+
+--Print a prompt, read in a line of input
+readPrompt :: String -> IO String
+readPrompt prompt = flushStr prompt >> getLine
+
+--Parse and evaluate a string, trap errors into its own function
+evalString :: String -> IO String
+evalString expr = return $ extractValue $ trapError (liftM show $ readExpr expr >>= eval)
+
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
