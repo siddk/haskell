@@ -4,7 +4,7 @@ module Main where
 import Text.ParserCombinators.Parsec hiding (spaces)
 import System.Environment
 import Control.Monad
-import Control.Monad.
+import Control.Monad.Error
 import System.IO
 
 -- Define a parser that recognizes symbols allowed in Scheme identifiers
