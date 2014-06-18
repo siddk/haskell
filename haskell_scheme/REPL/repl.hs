@@ -296,6 +296,9 @@ readPrompt prompt = flushStr prompt >> getLine
 evalString :: String -> IO String
 evalString expr = return $ extractValue $ trapError (liftM show $ readExpr expr >>= eval)
 
+--Evaluate a string, print result
+evalAndPrint :: String -> IO ()
+evalAndPrint expr =  evalString expr >>= putStrLn
 
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
