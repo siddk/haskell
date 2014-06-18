@@ -175,6 +175,14 @@ unpackNum (String n) = let parsed = reads n in
 unpackNum (List [n]) = unpackNum n
 unpackNum notNum     = throwError $ TypeMismatch "number" notNum
 
+
+--Define car
+car :: [LispVal] -> ThrowsError LispVal
+car [List (x : xs)]         = return x
+car [DottedList (x : xs) _] = return x
+car [badArg]                = throwError $ TypeMismatch "pair" badArg
+car badArgList              = throwError $ NumArgs 1 badArgList
+
 --Create Datatype to represent Errors
 data LispError = NumArgs Integer [LispVal]
                | TypeMismatch String LispVal
