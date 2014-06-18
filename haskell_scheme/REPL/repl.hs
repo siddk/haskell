@@ -282,6 +282,11 @@ readExpr input = case parse parseExpr "lisp" input of
     Left err -> throwError $ Parser err
     Right val -> return val
 
+--IO helper functions
+--Print a string, flush output buffer
+flushStr :: String -> IO ()
+flushStr str = putStr str >> hFlush stdout
+
 -- Main function, reads in command line args, executes readExpr on args
 main :: IO ()
 main = do
