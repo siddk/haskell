@@ -98,12 +98,12 @@ eval val@(String _) = return val
 eval val@(Number _) = return val
 eval val@(Bool _) = return val
 eval (List [Atom "quote", val]) = return val
-eval (List (Atom func : args)) = mapM eval args >>= apply func
 eval (List [Atom "if", pred, conseq, alt]) =
-     do result <- eval pred
-        case result of
-             Bool False -> eval alt
-             otherwise  -> eval conseq
+    do result <- eval pred
+       case result of
+         Bool False -> eval alt
+         otherwise -> eval conseq
+eval (List (Atom func : args)) = mapM eval args >>= apply func
 eval badForm = throwError $ BadSpecialForm "Unrecognized special form" badForm
 
 --Setup apply function, to apply a function to a series of arguments --> Primitive functionality
