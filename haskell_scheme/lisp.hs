@@ -1,10 +1,12 @@
+{-# LANGUAGE ExistentialQuantification #-}
+
 module Main where
-import Monad
+import Control.Monad
 import System.Environment
 import Control.Monad.Error
 import Data.IORef
 import Text.ParserCombinators.Parsec hiding (spaces)
-import IO hiding (try)
+import System.IO
 
 main :: IO ()
 main = do args <- getArgs
