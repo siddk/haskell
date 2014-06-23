@@ -6,7 +6,7 @@ Haskell is a functional programming language, one that is being widely adopted i
 The following make up a series of Haskell tutorials/projects I would like to complete by the end of August 2014.
 
 
-- [ ] Write Yourself a Scheme in 48 Hours
+- [x] Write Yourself a Scheme in 48 Hours
 - [ ] Roll Your own IRC Bot
 - [ ] How to Organize a Picnic on a Computer
 - [ ] Learn You a Haskell for the Greater Good
