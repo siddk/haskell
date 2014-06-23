@@ -13,4 +13,10 @@ doubleSmallNumber x = if x > 100
 -- let keyword: defines a name/value (variable) in ghci
 --          i.e: let x = [3,4,5,6,7,9]
 -- Lists in haskell are homogeneous - one type (ints, chars)
--- A string in haskell is a list of chars
+--          A string in haskell is a list of chars
+--          ++ operator combines lists --> problem: iterates
+--             through entirety of list, very slow
+--          : is the cons operator - instantaneous list creation
+--            of the form (single value : list) --> appends
+--            value to beginning of list
+
