@@ -31,6 +31,13 @@
 --          .. operator matches patterns
 --              - i.e every third number [3,6..300]
 --              - Only specify one step
+--              - Works with any sequence ['A'..'Z']
+--              - Do not use with floating points (screws up)
+-- Range functions
+--          cycle --> takes a list, cycles into infinite list
+--          repeat --> takes an element, cycles infinitely
+--          replicate n num --> List of num n times
+-----------------------------------------------------------------
 
 -- Function that doubles a value
 doubleMe x = x + x
