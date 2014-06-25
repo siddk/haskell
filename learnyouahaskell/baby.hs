@@ -36,4 +36,6 @@ doubleSmallNumber x = if x > 100
 --                   of elements from beginning of list
 --          drop --> Drops n elements from list
 --          maximum, minimum --> self-explanatory
+--          sum, product --> find sum or product of list
+--          elem --> n `elem` list checks if n is element of list
 
