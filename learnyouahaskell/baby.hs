@@ -32,4 +32,8 @@ doubleSmallNumber x = if x > 100
 --          length --> returns length of list
 --          null --> checks if list is empty
 --          reverse --> reverses a list
+--          take --> takes a number and a list, extracts number
+--                   of elements from beginning of list
+--          drop --> Drops n elements from list
+--          maximum, minimum --> self-explanatory
 
