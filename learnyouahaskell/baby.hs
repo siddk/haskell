@@ -33,10 +33,16 @@
 --              - Only specify one step
 --              - Works with any sequence ['A'..'Z']
 --              - Do not use with floating points (screws up)
+--
 -- Range functions
 --          cycle --> takes a list, cycles into infinite list
 --          repeat --> takes an element, cycles infinitely
 --          replicate n num --> List of num n times
+-----------------------------------------------------------------
+-- List Comprehensions
+--          Map: [x*2 | x <- [1..10], x*2 >= 12]
+--               Variable(function) | list , predicates
+--          Filter: Variable(function) | list, predicates
 -----------------------------------------------------------------
 
 -- Function that doubles a value
