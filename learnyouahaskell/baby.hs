@@ -1,6 +1,7 @@
 -- Basic Syntax Notes
 -- let keyword: defines a name/value (variable) in ghci
 --          i.e: let x = [3,4,5,6,7,9]
+-----------------------------------------------------------------
 -- Lists
 --          Lists in haskell are homogeneous - one type (i.e int)
 --          A string in haskell is a list of chars
@@ -24,7 +25,12 @@
 --          maximum, minimum --> self-explanatory
 --          sum, product --> find sum or product of list
 --          elem --> n `elem` list checks if n is element of list
-
+-----------------------------------------------------------------
+-- Ranges
+--          To get a list of numbers between 1 and 20 [1..20]
+--          .. operator matches patterns
+--              - i.e every third number [3,6..300]
+--              - Only specify one step
 
 -- Function that doubles a value
 doubleMe x = x + x
