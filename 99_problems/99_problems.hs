@@ -17,3 +17,6 @@ elementAt list num = list !! (num - 1)
 myLength :: [x] -> Int
 myLength x = length x
 
+-- Problem 5: Reverse a list.
+myLength :: [x] -> [x]
+myLength list = head list : reverse $ tail list
