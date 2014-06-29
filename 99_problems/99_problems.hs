@@ -7,4 +7,4 @@ myLast x = last x
 
 -- Problem 2: Find the last but one element of a list.
 myButLast :: [x] -> x
-myLast x = last $ init x
+myButLast x = last $ init x
