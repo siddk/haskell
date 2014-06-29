@@ -2,3 +2,5 @@
 -- 99_problems.hs contains problem statements, and solution scripts
 
 -- Problem 1: Find the last element of a list.
+myLast :: [x] -> x
+myLast x = last x
