@@ -30,6 +30,8 @@ isPalindrome [_] = True
 isPalindrome list = head list == last list && isPalindrome (init $ tail list)
 
 -- Problem 7: Flatten a list
+data NestedList a = Elem a | List [NestedList a]
+
 flatten :: NestedList lst -> [lst]
 flatten (Elem listelem) = [listelem]
 flatten lst = flatten (head lst) ++ flatten (tail lst)
