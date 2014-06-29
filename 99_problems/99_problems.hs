@@ -16,3 +16,4 @@ elementAt list num = list !! (num - 1)
 -- Problem 4: Find the number of elements of a list.
 myLength :: [x] -> Int
 myLength x = length x
+
