@@ -12,4 +12,3 @@ The following make up a series of Haskell tutorials/projects I would like to com
 - [x] Learn You a Haskell for the Greater Good (first chapter --> use rest for reference)
 - [ ] Parallel Processing with Haskell
 - [ ] H-99: 99 Haskell Problems
-- [ ] LISP in Haskell
