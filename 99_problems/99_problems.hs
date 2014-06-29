@@ -18,5 +18,5 @@ myLength :: [x] -> Int
 myLength x = length x
 
 -- Problem 5: Reverse a list.
-myLength :: [x] -> [x]
-myLength list = head list : reverse $ tail list
+myReverse :: [x] -> [x]
+myReverse list = head list : myReverse $ tail list
