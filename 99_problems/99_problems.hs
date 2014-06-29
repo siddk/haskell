@@ -36,3 +36,5 @@ flatten :: NestedList lst -> [lst]
 flatten (Elem listelem) = [listelem]
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
 flatten (List []) = []
+
+-- Problem 8:
