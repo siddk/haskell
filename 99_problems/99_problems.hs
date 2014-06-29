@@ -19,4 +19,5 @@ myLength x = length x
 
 -- Problem 5: Reverse a list.
 myReverse :: [x] -> [x]
-myReverse list = head list : myReverse $ tail list
+myReverse [] = []
+myReverse lst = (myReverse (tail lst)) ++ ([(head lst)])
