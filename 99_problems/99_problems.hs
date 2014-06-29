@@ -21,3 +21,10 @@ myLength x = length x
 myReverse :: [x] -> [x]
 myReverse [] = []
 myReverse lst = (myReverse (tail lst)) ++ ([(head lst)])
+
+-- Problem 6: Find out whether a list is a palindrome.
+--            A palindrome can be read forward or backward; e.g. (x a m a x)
+isPalindrome :: (Eq x) => [x] -> Bool
+isPalindrome [] = True
+isPalindrome [_] = True
+isPalindrome list = head list == last list && isPalindrome (init $ tail list)
