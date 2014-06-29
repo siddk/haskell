@@ -34,5 +34,5 @@ data NestedList a = Elem a | List [NestedList a]
 
 flatten :: NestedList lst -> [lst]
 flatten (Elem listelem) = [listelem]
-flatten lst = flatten (head lst) ++ flatten (tail lst)
-flatten [] = []
+flatten (List (x:xs)) = flatten x ++ flatten (List xs)
+flatten (List []) = []
