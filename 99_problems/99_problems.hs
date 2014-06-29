@@ -28,3 +28,9 @@ isPalindrome :: (Eq x) => [x] -> Bool
 isPalindrome [] = True
 isPalindrome [_] = True
 isPalindrome list = head list == last list && isPalindrome (init $ tail list)
+
+-- Problem 7: Flatten a list
+flatten :: NestedList lst -> [lst]
+flatten (Elem listelem) = [listelem]
+flatten lst = flatten (head lst) ++ flatten (tail lst)
+flatten [] = []
