@@ -7,6 +7,7 @@ The following make up a series of Haskell tutorials/projects I would like to com
 
 
 - [x] Write Yourself a Scheme in 48 Hours
+- [ ] [Haskell - A Structure and Interpretation of Computer Programs](http://github.com/siddk/haskell-sicp) 
 - [ ] Roll Your own IRC Bot
 - [ ] How to Organize a Picnic on a Computer
 - [x] Learn You a Haskell for the Greater Good (first chapter --> use rest for reference)
