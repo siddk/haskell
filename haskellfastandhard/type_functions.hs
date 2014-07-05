@@ -24,3 +24,4 @@ h = \x y -> x*x + y*y
 main = do
     print (f 2 3) -- f can only handle ints
     print (g 2.2 3) -- g can handle floats, ints, etc.
+    print (h 2 3)
