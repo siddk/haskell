@@ -89,11 +89,21 @@ square' x = (^) x 2 -- ' signifies a variation of function
 square'' x = (^2) x -- ^ has multiple prefix forms
 square''' = (^2) -- remove x, n-reduction
 
+-- Multiple absolute value functions, with conditionals
+absolute :: (Ord a, Num a) => a -> a -- a in Ord, Num type classes
+absolute x = if x >= 0 then x else -x
+absolute' x
+    | x >= 0 = x
+    | otherwise = -x
+
 main = do
     print (square 4)
     print (square' 4)
     print (square'' 4)
     print (square''' 4)
+    print (absolute (-22))
+    print (absolute' (-22))
+
 
 
 
