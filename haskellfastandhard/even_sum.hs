@@ -1,6 +1,8 @@
 -- even_sum.hs
 -- Problem: Given a list of integers, return the sum of the even numbers in the list.
 
+import Data.List -- for foldl'
+
 -- Version 1
 evenSum :: [Integer] -> Integer
 evenSum l = accumSum 0 l
@@ -46,12 +48,21 @@ evenSum''' = accumSum 0
                             else accumSum n xs
 
 -- Version 5
--- Higher order functions (filter, map, foldr)
+-- Higher order functions (filter, map, foldl)
 evenSum'''' :: Integral a => [a] -> a
 evenSum'''' l = mysum 0 (filter even l)
     where
         mysum n [] = n
         mysum n (x:xs) = mysum (n+x) xs
+
+-- Version 6
+-- foldl is haskell's accumulate
+-- foldl is lazy, doesn't evaluate accumulator function
+-- foldl' is strict, but needs external import
+evenSum''''' :: Integral a => [a] -> a
+evenSum''''' l = foldl' mysum 0 (filter even l)
+    where mysum acc value = acc + value
+
 
 main = do
     print (evenSum [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -59,5 +70,6 @@ main = do
     print (evenSum'' [1..10])
     print (evenSum''' [2, 4..10])
     print (evenSum'''' [1..10])
+    print (evenSum''''' [1..10])
 
 
