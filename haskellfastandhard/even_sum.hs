@@ -1,7 +1,7 @@
 -- even_sum.hs
 -- Problem: Given a list of integers, return the sum of the even numbers in the list.
 
-import Data.List -- for foldl'
+import Data.List(foldl') -- for foldl'
 
 -- Version 1
 evenSum :: [Integer] -> Integer
@@ -63,6 +63,11 @@ evenSum''''' :: Integral a => [a] -> a
 evenSum''''' l = foldl' mysum 0 (filter even l)
     where mysum acc value = acc + value
 
+-- Version 7
+-- Lambda expression for accumulator
+evenSum'''''' :: Integral a => [a] -> a
+evenSum'''''' l = foldl' (\x y -> x + y) 0 (filter even l)
+
 
 main = do
     print (evenSum [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -71,5 +76,5 @@ main = do
     print (evenSum''' [2, 4..10])
     print (evenSum'''' [1..10])
     print (evenSum''''' [1..10])
-
+    print (evenSum'''''' [1..10])
 
