@@ -7,6 +7,13 @@ f :: Int -> Int -> Int
 f x y = x*x + y*y
 
 -- Function g (no type) -> Same as f
+-- Type: undeclared, but type of function g is
+-- g :: Num a => a -> a
+-- a is a type variable
+-- Num a is a type class for numbers --> contains basic
+-- arithmetic operations, number operators.
+
+-- g :: Num a => a -> a
 g x y = x*x + y*y
 
 main = do
