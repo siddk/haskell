@@ -44,3 +44,9 @@
 -- "abc" ⇔ "ab"++"c"
 --
 -- In real code, use Data.Text to represent strings
+
+-- Tuples
+-- Unlike lists, tuples can have multiple types
+-- A special type of tuple is the pair (a, b)
+-- Pairs have special functions: fst, snd
+-- Otherwise, index with !!
