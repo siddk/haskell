@@ -73,6 +73,11 @@ evenSum'''''' l = foldl' (\x y -> x + y) 0 (filter even l)
 evenSum''''''' :: Integral a => [a] -> a
 evenSum''''''' l = foldl' (+) 0 (filter even l)
 
+-- Version 9
+-- n-reduction
+evenSum2 :: Integral a => [a] -> a
+evenSum2 = (foldl' (+) 0) . (filter even)
+
 main = do
     print (evenSum [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     print (evenSum' [1..10])
@@ -82,4 +87,5 @@ main = do
     print (evenSum''''' [1..10])
     print (evenSum'''''' [1..10])
     print (evenSum''''''' [1..10])
+    print (evenSum2 [1..10])
 
