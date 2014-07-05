@@ -74,9 +74,14 @@ evenSum''''''' :: Integral a => [a] -> a
 evenSum''''''' l = foldl' (+) 0 (filter even l)
 
 -- Version 9
--- n-reduction
+-- n-reduction, this is more flexible
 evenSum2 :: Integral a => [a] -> a
 evenSum2 = (foldl' (+) 0) . (filter even)
+
+-- squareEvenSum
+-- Uses version 9 to get the sum of all even squares of a list
+squareEvenSum :: Integral a => [a] -> a
+squareEvenSum = evenSum2 . (map (^2))
 
 main = do
     print (evenSum [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -88,4 +93,5 @@ main = do
     print (evenSum'''''' [1..10])
     print (evenSum''''''' [1..10])
     print (evenSum2 [1..10])
+    print (squareEvenSum [1..10])
 
