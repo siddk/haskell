@@ -93,7 +93,7 @@ main = do
     print (square 4)
     print (square' 4)
     print (square'' 4)
-    print (squre''' 4)
+    print (square''' 4)
 
 
 
