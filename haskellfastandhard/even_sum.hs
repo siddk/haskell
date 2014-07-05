@@ -45,9 +45,19 @@ evenSum''' = accumSum 0
                             then accumSum (n+x) xs
                             else accumSum n xs
 
+-- Version 5
+-- Higher order functions (filter, map, foldr)
+evenSum'''' :: Integral a => [a] -> a
+evenSum'''' l = mysum 0 (filter even l)
+    where
+        mysum n [] = n
+        mysum n (x:xs) = mysum (n+x) xs
+
 main = do
     print (evenSum [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     print (evenSum' [1..10])
     print (evenSum'' [1..10])
     print (evenSum''' [2, 4..10])
+    print (evenSum'''' [1..10])
+
 
