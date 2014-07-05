@@ -35,12 +35,19 @@ evenSum'' l = accumSum 0 l
                             then accumSum (n+x) xs
                             else accumSum n xs
 
-
-
-
+-- Version 4
+-- n reduction -> remove l from function
+evenSum''' :: Integral a => [a] -> a
+evenSum''' = accumSum 0
+    where
+        accumSum n [] = n
+        accumSum n (x:xs) = if even x
+                            then accumSum (n+x) xs
+                            else accumSum n xs
 
 main = do
-    print (evenSum [1, 2, 3, 4, 5])
-    print (evenSum' [1..5])
-    print (evenSum'' [1..5])
+    print (evenSum [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+    print (evenSum' [1..10])
+    print (evenSum'' [1..10])
+    print (evenSum''' [2, 4..10])
 
