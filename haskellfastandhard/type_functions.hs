@@ -16,6 +16,11 @@ f x y = x*x + y*y
 -- g :: Num a => a -> a
 g x y = x*x + y*y
 
+-- Function h is the same as f and g, but with lambdas
+-- Lambda is denoted \var = expression
+-- Anonymous functions
+h = \x y -> x*x + y*y
+
 main = do
     print (f 2 3) -- f can only handle ints
     print (g 2.2 3) -- g can handle floats, ints, etc.
