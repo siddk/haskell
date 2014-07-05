@@ -81,3 +81,19 @@
 -- f :: a -> b        ⇔ f is a function from a to b
 -- f :: a -> b -> c   ⇔ f is a function from a to (b→c)
 -- f :: (a -> b) -> c ⇔ f is a function from (a→b) to c
+
+-- Infix notation, multiple function definitions:
+square :: Num a => a -> a
+square x = x^2 -- ^ uses infix notation, has prefix form
+square' x = (^) x 2 -- ' signifies a variation of function
+square'' x = (^2) x -- ^ has multiple prefix forms
+square''' = (^2) -- remove x, n-reduction
+
+main = do
+    print (square 4)
+    print (square' 4)
+    print (square'' 4)
+    print (squre''' 4)
+
+
+
