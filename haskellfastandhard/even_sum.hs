@@ -9,5 +9,8 @@ accumSum n l = if l == []
                 else let x = head l
                          xs = tail l
                      in if even x
-                        then accumSum n+x xs
+                        then accumSum (n+x) xs
                         else accumSum n xs
+
+main = do
+    print (evenSum [1, 2, 3, 4, 5])
