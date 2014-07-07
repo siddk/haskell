@@ -61,3 +61,8 @@ data BinTree a = Empty
 -- deriving creates the mentioned functions for the class. In this case, deriving creates the Show (to_string) function for the binary tree node class
 
 -- Function to create a tree from a list:
+-- Creates a tree where first element is the tree node, all elements of list less than first element are on left side, rest are on right side
+treeFromList :: (Ord a) => [a] -> BinTree a
+treeFromList [] = Empty
+treeFromList (x:xs) = Node x (treeFromList (filter (<x) xs))
+                             (treeFromList (filter (>x) xs))
