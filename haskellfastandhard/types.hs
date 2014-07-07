@@ -4,6 +4,7 @@
 -- data Name = NameConstructor AnotherType --> does create a distinction
 -- data --> can construct structures which can be recursives
 -- deriving --> creates functions for you
+import Data.List
 
 -- You can construct your own Types with aliases/type synonyms:
 type AliasName  = String
@@ -54,3 +55,6 @@ z = Complex { real = 3, img = 4 }
 
 -- Recursive Types
 -- Standard Example: Binary Trees
+data BinTree a = Empty
+               | Node a (BinTree a) (BinTree a) deriving (Show)
+-- deriving creates the mentioned functions for the class. In this case, deriving creates the Show (to_string) function for the binary tree node class
