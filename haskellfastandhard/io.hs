@@ -13,3 +13,10 @@
 -- Problem 1: Ask a user to enter a list of numbers. Print the sum of the numbers
 toList :: String -> [Integer]
 toList input = read ("[" ++ input ++ "]")
+
+main = do
+    putStrLn "Enter a list of numbers (separated by comma):"
+    input <- getLine
+    print $ sum (toList input)
+
+-- Breakdown
