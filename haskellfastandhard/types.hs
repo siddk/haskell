@@ -1,10 +1,10 @@
+import Data.List
 -- Types
 -- Type Rules:
 -- type Name = AnotherType --> an alias, no compiler distinction
 -- data Name = NameConstructor AnotherType --> does create a distinction
 -- data --> can construct structures which can be recursives
 -- deriving --> creates functions for you
-import Data.List
 
 -- You can construct your own Types with aliases/type synonyms:
 type AliasName  = String
