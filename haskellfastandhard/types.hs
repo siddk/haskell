@@ -1,1 +1,6 @@
--- 3.2 Types
+-- Types
+-- Type Rules:
+-- type Name = AnotherType --> an alias, no compiler distinction
+-- data Name = NameConstructor AnotherType --> does create a distinction
+-- data --> can construct structures which can be recursives
+-- deriving --> creates functions for you
