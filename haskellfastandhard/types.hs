@@ -57,4 +57,7 @@ z = Complex { real = 3, img = 4 }
 -- Standard Example: Binary Trees
 data BinTree a = Empty
                | Node a (BinTree a) (BinTree a) deriving (Show)
+
 -- deriving creates the mentioned functions for the class. In this case, deriving creates the Show (to_string) function for the binary tree node class
+
+-- Function to create a tree from a list:
