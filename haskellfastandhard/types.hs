@@ -46,7 +46,6 @@ dataMain = putStrLn $ dataShowInfos dataName dataColor
 --                    , fieldn :: [type of fieldn] }
 
 -- This second manner is better, as it allows one to do the following:
-
 data Complex a = Complex { real :: a, img :: a }
 c = Complex 1.0 2.0
 z = Complex { real = 3, img = 4 }
