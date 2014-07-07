@@ -51,3 +51,6 @@ c = Complex 1.0 2.0
 z = Complex { real = 3, img = 4 }
 -- real c ⇒ 1.0
 -- img z ⇒ 4
+
+-- Recursive Types
+-- Standard Example: Binary Trees
