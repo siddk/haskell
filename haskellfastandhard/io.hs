@@ -11,3 +11,5 @@
 -- In an IO block, each consecutive line will have an IO supertype
 
 -- Problem 1: Ask a user to enter a list of numbers. Print the sum of the numbers
+toList :: String -> [Integer]
+toList input = read ("[" ++ input ++ "]")
