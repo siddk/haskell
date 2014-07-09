@@ -1,0 +1,2 @@
+-- Sum of Odd Elements
+-- Return sum of odd elements from an list.
