@@ -1,7 +1,7 @@
 -- Sum of Odd Elements
 -- Return sum of odd elements from an list.
 f :: [Int] -> [Int]
-f arr = sum [odd x | x <- arr]
+f arr = sum ([x | x <- arr, odd x])
 
 -- This part handles the Input/Output and can be used as it is. Do not change or modify it.
 main = do
