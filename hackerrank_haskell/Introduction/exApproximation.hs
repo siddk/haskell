@@ -4,7 +4,10 @@
 -- Evaluate e^x for given values of x, by using the above expansion for the first 10 terms.
 
 solve :: Double -> Double
-solve x = -- Insert your code here --
+solve x = rSolve 9 x
+    where rSolve count x = if count == 0
+                           then 1
+                           else (x^count / (product [1..n])) + (rSolve (count - 1) x)
 
 main :: IO ()
 main = getContents >>= mapM_ print. map solve. map (read::String->Double). tail. words
