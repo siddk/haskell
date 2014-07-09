@@ -7,7 +7,7 @@ solve :: Double -> Double
 solve x = rSolve 9 x
     where rSolve count x = if count == 0
                            then 1
-                           else (x^count / (product [1..n])) + (rSolve (count - 1) x)
+                           else (x^count / (product [1..count])) + (rSolve (count - 1) x)
 
 main :: IO ()
 main = getContents >>= mapM_ print. map solve. map (read::String->Double). tail. words
