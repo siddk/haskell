@@ -1,6 +1,7 @@
 -- Hello Worlds
 -- Given n, print "Hello World" n times
 import Control.Monad
+hello_worlds :: Int -> IO ()
 hello_worlds n = replicateM_ n (putStrLn "Hello World")
 
 -- This part is related to the Input/Output and can be used as it is
